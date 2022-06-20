@@ -1,0 +1,46 @@
+body {
+    font-size: 62.5%;
+    font-family: 'IBM Plex Sans Arabic',
+        sans-serif;
+    background-color: hsl(27, 66%, 92%);
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+.container {
+    display: flex;
+}
+
+.component {
+    width: 95%;
+    margin: 10% 0;
+}
+
+.balance {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    background-color: hsl(10, 79%, 65%);
+}
+
+.balance>* {
+    padding: 1rem;
+    color: white;
+}
+
+.half {
+    height: max-content;
+}
+
+.half>* {
+    padding: 0;
+    margin: 5% 0;
+}
+
+.balance>div {
+    margin: auto;
+}

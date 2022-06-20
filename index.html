@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Expenses chart component</title>
+
+</head>
+
+<body>
+    <section class="container component">
+        <section class="container balance">
+            <div class="half">
+                <p>My balance</p>
+                <h2 id="current-balance">$921.48</h2>
+            </div>
+
+            <div><img src="./images/logo.svg" alt="overlapping circles" srcset=""></div>
+        </section>
+        <section class="container">
+            <h2>Spending - Last 7 days</h2>
+            <section class="bars">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <p class="day" data-day="0">mon</p>
+                <p class="day" data-day="1">tue</p>
+                <p class="day" data-day="2">wed</p>
+                <p class="day" data-day="3">thu</p>
+                <p class="day" data-day="4">fri</p>
+                <p class="day" data-day="5">sat</p>
+                <p class="day" data-day="6">sun</p>
+            </section>
+            <!-- Break -->
+            <section class="total-info">
+                <p>Total this month</p>
+                <h1 id="month-total">$478.33</h1>
+            </section>
+            <section class="percent-info">
+                <h6 id="percentage-increase">+2.4%</h6>
+                <p>from last month</p>
+            </section>
+        </section>
+    </section>
+    <script src="./main.js"></script>
+</body>
+
+</html>
