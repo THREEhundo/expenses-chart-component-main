@@ -2,7 +2,7 @@ body {
     font-size: 62.5%;
     font-family: 'IBM Plex Sans Arabic',
         sans-serif;
-    background-color: hsl(27, 66%, 92%);
+    background-color: hwb(26 74% 1%);
 }
 
 h2 {
@@ -31,10 +31,47 @@ h2 {
     margin: 5% 0;
 }
 
-.balance>* {
+.balance>*,
+.spending>* {
     padding: 1rem;
     color: white;
 }
+
+.spending {
+    background-color: hsl(33, 100%, 98%);
+    display: flex;
+    flex-flow: column-wrap;
+}
+
+.spending>* {
+    flex-basis: 100%;
+}
+
+.spending>* {
+    color: black;
+}
+
+.bars {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 3%;
+    justify-content: space-between;
+}
+
+.bar {
+    height: 20px;
+    background-color: hsl(10, 79%, 65%);
+    border-radius: 3px;
+}
+
+.bar,
+.day {
+    min-width: 10%;
+    text-align: center;
+}
+
+
 
 .half {
     height: max-content;
@@ -48,4 +85,9 @@ img {
 
 .logo-container {
     margin-left: auto;
+}
+
+.total-info,
+.percent-info {
+    flex-basis: 50%;
 }
