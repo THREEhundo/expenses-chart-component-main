@@ -19,3 +19,21 @@
  * 		p -> percentage (bold)
  * 		p -> from last month
  */
+const bars = document.querySelectorAll('.bar')
+bars.forEach((bar) => {
+	bar.addEventListener(
+		'mouseenter',
+		(e) => (e.target.style.backgroundColor = '#76B7BC')
+	)
+	bar.addEventListener(
+		'mouseleave',
+		(e) => (e.target.style.backgroundColor = 'hsl(10, 79%, 65%)')
+	)
+})
+
+//console.log(bars)
+//
+//bars.forEach((bar) => bar.addEventListener('hover', () => console.log(`first`)))
+//
+//const graph = document.querySelector('.bars')
+//graph.addEventListener('mouseenter', (e) => console.log(e.target))
