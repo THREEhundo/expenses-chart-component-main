@@ -23,7 +23,7 @@ const bars = document.querySelectorAll('.bar')
 bars.forEach((bar) => {
 	bar.addEventListener(
 		'mouseenter',
-		(e) => (e.target.style.backgroundColor = '#76B7BC')
+		(e) => (e.target.style.backgroundColor = 'hsl(28, 10%, 53%)')
 	)
 	bar.addEventListener(
 		'mouseleave',
@@ -31,9 +31,57 @@ bars.forEach((bar) => {
 	)
 })
 
-//console.log(bars)
-//
-//bars.forEach((bar) => bar.addEventListener('hover', () => console.log(`first`)))
-//
-//const graph = document.querySelector('.bars')
-//graph.addEventListener('mouseenter', (e) => console.log(e.target))
+const highlightDayBar = () => {
+	const getDate = new Date().getDay()
+	switch (getDate) {
+		case 0:
+			bars[0].style.backgroundColor = '#76B7BC'
+			break
+		case 1:
+			bars[1].style.backgroundColor = '#76B7BC'
+			break
+		case 2:
+			bars[2].style.backgroundColor = '#76B7BC'
+			break
+		case 3:
+			bars[3].style.backgroundColor = '#76B7BC'
+			break
+		case 4:
+			bars[4].style.backgroundColor = '#76B7BC'
+			break
+		case 5:
+			bars[5].style.backgroundColor = '#76B7BC'
+			break
+		case 6:
+			bars[6].style.backgroundColor = '#76B7BC'
+			break
+
+		default:
+			break
+	}
+}
+highlightDayBar()
+
+//const updateDailyAmount = () => {
+//	bars.map((x, i) => )
+//}
+const fetchJSON = async (updateAmount) => {
+	await fetch('data.json')
+		.then((resp) => resp.json())
+		.then((data) => {
+			console.log([...bars])
+			updateAmount(data, bars)
+		})
+}
+
+fetchJSON(updateDailyAmount)
+
+function updateDailyAmount(data, bars) {
+	;[...bars].map((x, i) => {
+		console.log(x, i)
+		data.map((k, index) => {
+			console.log(x, k)
+			if (i == index) x.innerHTML = k.amount
+		})
+	})
+}
