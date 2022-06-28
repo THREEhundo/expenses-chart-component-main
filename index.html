@@ -28,21 +28,9 @@
         <section class="container spending">
             <h2>Spending - Last 7 days</h2>
             <section class="bars">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <p class="day" data-day="0">mon</p>
-                <p class="day" data-day="1">tue</p>
-                <p class="day" data-day="2">wed</p>
-                <p class="day" data-day="3">thu</p>
-                <p class="day" data-day="4">fri</p>
-                <p class="day" data-day="5">sat</p>
-                <p class="day" data-day="6">sun</p>
+                <canvas id="myChart" width="300px" height="300px"></canvas>
             </section>
+
             <!-- Break -->
             <section class="total-info">
                 <p>Total this month</p>
@@ -54,6 +42,7 @@
             </section>
         </section>
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/main.js"></script>
 </body>
 

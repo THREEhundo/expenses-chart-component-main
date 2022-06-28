@@ -19,6 +19,7 @@
  * 		p -> percentage (bold)
  * 		p -> from last month
  */
+
 const bars = document.querySelectorAll('.bar')
 bars.forEach((bar) => {
 	bar.addEventListener(
@@ -33,55 +34,111 @@ bars.forEach((bar) => {
 
 const highlightDayBar = () => {
 	const getDate = new Date().getDay()
-	switch (getDate) {
-		case 0:
-			bars[0].style.backgroundColor = '#76B7BC'
-			break
-		case 1:
-			bars[1].style.backgroundColor = '#76B7BC'
-			break
-		case 2:
-			bars[2].style.backgroundColor = '#76B7BC'
-			break
-		case 3:
-			bars[3].style.backgroundColor = '#76B7BC'
-			break
-		case 4:
-			bars[4].style.backgroundColor = '#76B7BC'
-			break
-		case 5:
-			bars[5].style.backgroundColor = '#76B7BC'
-			break
-		case 6:
-			bars[6].style.backgroundColor = '#76B7BC'
-			break
+	const daysArr = [
+		'hsl(10, 79%, 65%)',
+		'hsl(10, 79%, 65%)',
+		'hsl(10, 79%, 65%)',
+		'hsl(10, 79%, 65%)',
+		'hsl(10, 79%, 65%)',
+		'hsl(10, 79%, 65%)',
+		'hsl(10, 79%, 65%)',
+	]
+	let newDay = daysArr.map((day, i) => (i == getDate ? (day = '#76B7BC') : day))
+	console.log(newDay)
 
-		default:
-			break
-	}
+	return newDay
 }
-highlightDayBar()
 
 //const updateDailyAmount = () => {
 //	bars.map((x, i) => )
 //}
-const fetchJSON = async (updateAmount) => {
+const fetchJSON = async (updateAmount) =>
 	await fetch('data.json')
 		.then((resp) => resp.json())
 		.then((data) => {
-			console.log([...bars])
 			updateAmount(data, bars)
+			let d = retrieveDailyData(data)
+			return addData(myChart, d)
 		})
-}
 
-fetchJSON(updateDailyAmount)
+//let barData = fetchJSON(updateDailyAmount)
 
 function updateDailyAmount(data, bars) {
 	;[...bars].map((x, i) => {
-		console.log(x, i)
 		data.map((k, index) => {
-			console.log(x, k)
 			if (i == index) x.innerHTML = k.amount
 		})
 	})
 }
+
+function retrieveDailyData(data) {
+	return [...data].map((item) => item.amount)
+}
+
+const daysArr = [
+	'hsl(10, 79%, 65%)',
+	'hsl(10, 79%, 65%)',
+	'hsl(10, 79%, 65%)',
+	'hsl(10, 79%, 65%)',
+	'hsl(10, 79%, 65%)',
+	'hsl(10, 79%, 65%)',
+	'hsl(10, 79%, 65%)',
+]
+const ctx = document.getElementById('myChart').getContext('2d')
+const myChart = new Chart(ctx, {
+	type: 'bar',
+	scaleLineColor: 'rgba(0,0,0,0)',
+	data: {
+		labels: ['mon', 'tues', 'wed', 'thu', 'fri', 'sat', 'sun'],
+		datasets: [
+			{
+				data: [17.45, 34.91, 52.36, 31.07, 23.39, 43.28, 25.48],
+				backgroundColor: highlightDayBar(),
+				borderColor: highlightDayBar(),
+				borderWidth: 1,
+			},
+		],
+	},
+	options: {
+		plugins: {
+			legend: {
+				display: false,
+			},
+		},
+		scales: {
+			y: {
+				beginAtZero: true,
+				grid: {
+					display: false,
+				},
+				ticks: {
+					display: false,
+				},
+			},
+			x: {
+				grid: {
+					display: false,
+				},
+			},
+		},
+	},
+})
+//function addData(chart, data) {
+//	chart.data.datasets.forEach((dataset) => {
+//		dataset.data.push(data)
+//		console.log(dataset.data)
+//	})
+//	chart.update()
+//}
+//removeData(myChart)
+//addData(myChart, barData)
+//
+//function removeData(chart) {
+//	chart.data.labels.pop()
+//	chart.data.datasets.forEach((dataset) => {
+//		dataset.data.pop()
+//	})
+//	chart.update()
+//}
+//
+//console.log(myChart.data.dataset)
