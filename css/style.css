@@ -9,6 +9,10 @@ h2 {
     font-size: 1.4rem;
 }
 
+p {
+    font-size: 0.8rem;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -65,17 +69,6 @@ h2 {
     width: 90%;
 }
 
-.bar {
-    height: 20px;
-    background-color: hsl(10, 79%, 65%);
-    border-radius: 3px;
-}
-
-#bars div.bar:hover {
-    color: hsl(186, 34%, 60%);
-}
-
-.bar,
 .day {
     min-width: 10%;
     text-align: center;
@@ -86,7 +79,11 @@ h2 {
 }
 
 .half {
-    height: max-content;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    gap: 0.2rem;
+    padding: 0 1rem;
 }
 
 .half>*,
