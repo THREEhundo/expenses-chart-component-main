@@ -12,6 +12,7 @@ h2 {
 .container {
     display: flex;
     flex-direction: column;
+    min-width: 300px;
 }
 
 .component {
@@ -60,6 +61,8 @@ h2 {
     align-items: center;
     gap: 3%;
     justify-content: space-between;
+    position: relative;
+    width: 90%;
 }
 
 .bar {
@@ -127,4 +130,13 @@ img {
 #percentage-increase {
     margin-top: 2rem;
     font-size: 1rem;
+}
+
+@media (min-width: 500px) {
+
+    /* Container */
+    .container {
+        max-width: 400px;
+        max-height: 500px;
+    }
 }

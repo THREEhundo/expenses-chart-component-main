@@ -142,3 +142,9 @@ const myChart = new Chart(ctx, {
 //}
 //
 //console.log(myChart.data.dataset)
+
+// ! Make mobile responsive
+// ? Make bars wider
+// ? Make container wider
+// ! Add border top to last container
+// ?
