@@ -19,7 +19,7 @@
  * 		p -> percentage (bold)
  * 		p -> from last month
  */
-
+let delayed
 const bars = document.querySelectorAll('.bar')
 bars.forEach((bar) => {
 	bar.addEventListener(
@@ -102,6 +102,18 @@ const myChart = new Chart(ctx, {
 		],
 	},
 	options: {
+		animation: {
+			onComplete: () => {
+				delayed = true
+			},
+			delay: (context) => {
+				let delay = 0
+				if (context.type === 'data' && context.mode === 'default' && !delayed) {
+					delay = context.dataIndex * 300 + context.datasetIndex * 100
+				}
+				return delay
+			},
+		},
 		plugins: {
 			legend: {
 				display: false,
@@ -125,6 +137,7 @@ const myChart = new Chart(ctx, {
 		},
 	},
 })
+
 //function addData(chart, data) {
 //	chart.data.datasets.forEach((dataset) => {
 //		dataset.data.push(data)
