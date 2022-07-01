@@ -1,36 +1,4 @@
-/***
- * section -> .balance-container
- * 		p -> My balance
- * 		h2 -> $921.48
- * 		div -> .svg-container
- * 		img -> svg logo
- *
- * section -> .spending-chart
- * 		section -> bar-graph-container
- * 		h2 -> Spending - Last 7 Days
- * 		div -> .daily-bar x 7 (data-day)
- * 		p -> .daily-bar-label x 7
- *
- * section -> .spending-total
- * 	section -> .half
- * 		p -> total this month
- * 		h1 -> .total-num
- * 	section -> .half
- * 		p -> percentage (bold)
- * 		p -> from last month
- */
-let delayed
 const bars = document.querySelectorAll('.bar')
-bars.forEach((bar) => {
-	bar.addEventListener(
-		'mouseenter',
-		(e) => (e.target.style.backgroundColor = 'hsl(28, 10%, 53%)')
-	)
-	bar.addEventListener(
-		'mouseleave',
-		(e) => (e.target.style.backgroundColor = 'hsl(10, 79%, 65%)')
-	)
-})
 
 const highlightDayBar = () => {
 	const getDate = new Date().getDay()
@@ -52,28 +20,28 @@ const highlightDayBar = () => {
 //const updateDailyAmount = () => {
 //	bars.map((x, i) => )
 //}
-const fetchJSON = async (updateAmount) =>
-	await fetch('data.json')
-		.then((resp) => resp.json())
-		.then((data) => {
-			updateAmount(data, bars)
-			let d = retrieveDailyData(data)
-			return addData(myChart, d)
-		})
+//const fetchJSON = async (updateAmount) =>
+//	await fetch('data.json')
+//		.then((resp) => resp.json())
+//		.then((data) => {
+//			updateAmount(data, bars)
+//			let d = retrieveDailyData(data)
+//			return addData(myChart, d)
+//		})
 
 //let barData = fetchJSON(updateDailyAmount)
 
-function updateDailyAmount(data, bars) {
-	;[...bars].map((x, i) => {
-		data.map((k, index) => {
-			if (i == index) x.innerHTML = k.amount
-		})
-	})
-}
-
-function retrieveDailyData(data) {
-	return [...data].map((item) => item.amount)
-}
+//function updateDailyAmount(data, bars) {
+//	;[...bars].map((x, i) => {
+//		data.map((k, index) => {
+//			if (i == index) x.innerHTML = k.amount
+//		})
+//	})
+//}
+//
+//function retrieveDailyData(data) {
+//	return [...data].map((item) => item.amount)
+//}
 
 const daysArr = [
 	'hsl(10, 79%, 65%)',
@@ -84,6 +52,9 @@ const daysArr = [
 	'hsl(10, 79%, 65%)',
 	'hsl(10, 79%, 65%)',
 ]
+
+//! Chart.js
+let delayed
 const ctx = document.getElementById('myChart').getContext('2d')
 const myChart = new Chart(ctx, {
 	type: 'bar',
@@ -157,9 +128,3 @@ const myChart = new Chart(ctx, {
 //}
 //
 //console.log(myChart.data.dataset)
-
-// ! Make mobile responsive
-// ? Make bars wider
-// ? Make container wider
-// ! Add border top to last container
-// ?
